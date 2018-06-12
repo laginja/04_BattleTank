@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Engine/World.h"		// MUST be included for GetWorld()->... to work properly. Otherwise: "pointer to incomplete class is not allowed"
 #include "TankAIController.h"
+#include "Engine/World.h"		// MUST be included for GetWorld()->... to work properly. Otherwise: "pointer to incomplete class is not allowed"
 
 
 void ATankAIController::BeginPlay()
