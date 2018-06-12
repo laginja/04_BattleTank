@@ -2,7 +2,7 @@
 
 #include "TankPlayerController.h"
 #include "Engine/World.h"		// MUST be included for GetWorld()->... to work properly. Otherwise: "pointer to incomplete class is not allowed"
-
+#include "Tank.h"
 
 void ATankPlayerController::BeginPlay()
 {
@@ -24,7 +24,6 @@ void ATankPlayerController::BeginPlay()
 void ATankPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 	AimTowardsCrosshair();
 }
 

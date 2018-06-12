@@ -2,7 +2,7 @@
 
 #include "TankAIController.h"
 #include "Engine/World.h"		// MUST be included for GetWorld()->... to work properly. Otherwise: "pointer to incomplete class is not allowed"
-
+#include "Tank.h"
 
 void ATankAIController::BeginPlay()
 {
