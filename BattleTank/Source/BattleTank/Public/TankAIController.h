@@ -16,9 +16,6 @@ public:
 	void BeginPlay() override;
 	
 private:
-	ATank * GetPossessedTank();
-	
-	ATank* GetPlayerTank() const;
 
 	void Tick(float DeltaTime) override;
 };
