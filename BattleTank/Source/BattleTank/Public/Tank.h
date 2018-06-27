@@ -6,9 +6,10 @@
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"		// Put new includes above
 
-class UTankAimingComponent;
 class UTankBarrel;
 class UTankTurret;
+class UTankAimingComponent;
+class UTankMovementComponent;
 class AProjectile;
 
 UCLASS()
@@ -31,6 +32,9 @@ public:
 
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
+
+	UPROPERTY(BlueprintReadOnly)		// readonly omogucava da uzmemo referencu na komponentu pa mozemo pristupiti njenim metodama
+	UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
 	// Sets default values for this pawn's properties
