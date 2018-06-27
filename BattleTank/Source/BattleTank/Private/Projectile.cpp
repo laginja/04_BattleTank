@@ -31,9 +31,6 @@ void AProjectile::Tick(float DeltaTime)
 
 void AProjectile::LaunchProjectile(float Speed)
 {
-	auto Time = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp, Warning, TEXT("%.2f: Projectile fired at %f"), Time, Speed);
-
 	ProjectileMovement->SetVelocityInLocalSpace(FVector::ForwardVector * Speed);		// dobijemo unit vector (1) koji pomnožimo sa Speed
 	ProjectileMovement->Activate();														// u konstruktoru smo deaktivirali jer ne želimo da bude aktivna u startu nego tek kad se spawna
 }
