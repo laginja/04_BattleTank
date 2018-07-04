@@ -2,11 +2,17 @@
 
 #include "TankPlayerController.h"
 #include "Engine/World.h"		// MUST be included for GetWorld()->... to work properly. Otherwise: "pointer to incomplete class is not allowed"
-#include "Tank.h"
+#include "TankAimingComponent.h"
 
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	if (!ensure(GetPawn())) { return; }
+	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();	// because the constructors run first, we should already have AimingComponent created and we pass it to an event
+	if (!ensure(AimingComponent)) { return; }
+	
+	FoundAimingComponent(AimingComponent);
+	
 }
 
 // Called every frame
@@ -16,25 +22,19 @@ void ATankPlayerController::Tick(float DeltaTime)
 	AimTowardsCrosshair();
 }
 
-
-
-ATank* ATankPlayerController::GetControlledTank() const
-{
-	return Cast<ATank>(GetPawn());
-}
-
 void ATankPlayerController::AimTowardsCrosshair()
 {
-	if (!GetControlledTank()) { return; }
+	if (!ensure(GetPawn())) { return; }
+
+	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();	
+	if (!ensure(AimingComponent)) { return; }
 
 	FVector HitLocation;	// Out parameter
 
 	if (GetSightRayHitLocation(HitLocation))	// Has "side-effect"; line tracing
 	{
-		
-		GetControlledTank()->AimAt(HitLocation);
+		AimingComponent->AimAt(HitLocation);
 	}
-	
 }
 //Get world location if linetrace through crosshair
 bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const		// referenca na OUT parametar
