@@ -12,7 +12,6 @@ void ATankPlayerController::BeginPlay()
 	if (!ensure(AimingComponent)) { return; }
 	
 	FoundAimingComponent(AimingComponent);
-	
 }
 
 // Called every frame
